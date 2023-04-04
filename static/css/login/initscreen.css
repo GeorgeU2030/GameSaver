@@ -1,0 +1,67 @@
+
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans&family=Roboto+Condensed&display=swap');
+
+:root{
+    --bs-body-font-family:'DM Sans', sans-serif;
+}
+
+*{
+    margin-top: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+}
+
+
+
+#signup{
+    font-weight: bolder;
+}
+
+#firstitem{
+    color: #ec2414;
+    font-weight: bolder;
+    font-size: 1.5rem;
+}
+#login{
+    font-weight: bolder;
+}
+
+#xboxitem{
+    color: #137b13;
+    font-weight: bolder;
+}
+#psitem {
+    color: #05519d;
+    font-weight: bolder;
+}
+#nintendoitem{
+    color: #e4040c;
+    font-weight: bolder;
+}
+
+.navbar{
+    border: 4px solid #ec2414;
+}
+.nav-link{
+    margin-right: 30px;
+}
+
+.carousel-inner{
+    max-height: 35rem;
+}
+
+body{
+    background-color: #ec2414;
+    color: white;
+    font-weight: bolder;
+}
+
+#rowb{
+    background-color: #f4847c;
+}
+
+.img-thumbnail{
+    border: none;
+    padding: 0;
+}
