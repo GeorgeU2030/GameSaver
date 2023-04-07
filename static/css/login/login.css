@@ -1,0 +1,19 @@
+
+a{
+    color: white;
+}
+
+section{
+    padding-top: 4rem;
+}
+
+.btn{
+    width: 30%;
+    background-color: white;
+    color: #ec2414;
+    margin-top: 2rem;
+}
+
+.btn:hover{
+    background-color: antiquewhite;
+}
