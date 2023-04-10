@@ -6,4 +6,6 @@ app_name = 'login'
 urlpatterns = [
     path('', views.screeninit),
     path('login/home',views.showhome,name='home'),
+    path('addgame',views.showaddgame),
+    path('newgame',views.newgame)
 ]

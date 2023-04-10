@@ -1,16 +1,20 @@
 {% extends "account/base.html" %}
 
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>GameSaver</title>
 </head>
 {% block content %}
+
+<link href="{% static 'login/home.css' %}" rel="stylesheet">
 <body>
-    HOMEEEEEEEEEEEE
+   
+   <!---- HOMEEEEEEEEEEEE
 
     <h1>{{ user.email }}</h1>
 
@@ -19,6 +23,108 @@
     <h1> {{ u }}</h1>
 
     {% endif %}
+
+    --> 
+
+    
+
+    <nav class="navbar navbar-expand-lg" style="border: none;">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">My Games</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            </ul>
+              
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0" >
+
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="/addgame" id="addGame">+ Game</a>
+                </li>
+                <form class="form-inline my-2 my-lg-0 d-flex">
+                    <input class="form-control mr-sm-2" type="search" placeholder="Search">
+                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit" id="searchbtn">Search</button>
+                  </form>
+             
+            </ul>
+           
+          </div>
+        </div>
+      </nav>
+
+
+      {% if games %}
+
+
+      <div class="row py-3 " style="color: black;">
+        {% for game in games%}
+        <div class="col-lg-3 px-3 py-3 col-sm-6 text-center"> 
+        <img src="/media/{{ game.image }}" class="img-thumbnail" style="width: 13rem; height: 15rem ;">
+        <p class="mb-1"> {{ game.name }}</p>
+        <div class="row d-flex justify-content-center">
+          <div class="col text-center" >
+            <p class="mb-1" style="margin-left: 5rem;"> {{ game.year }}</p>
+          </div>
+          <div class="col text-start" >
+            <p class="mb-1" style="margin-right: 3rem;"> {{ game.storage }} GB</p>
+          </div>
+        </div>
+        <p class="mb-1">  $ {{ game.prize }}</p>
+
+        {% if game.score < 50 %}
+        <p class="mb-1" style="color: red;"> MetaCritic: {{ game.score }}</p>
+        {% elif game.score > 49 and game.score < 60 %}
+        <p class="mb-1" style="color: #ec2414;"> MetaCritic: {{ game.score }}</p>
+        {% elif game.score > 59 and game.score < 70 %}
+        <p class="mb-1" style="color: goldenrod;"> MetaCritic: {{ game.score }}</p>
+        {% elif game.score > 69 and game.score < 85 %}
+        <p class="mb-1" style="color: #137b13;"> MetaCritic: {{ game.score }}</p>
+        {% elif game.score > 84   %}
+        <p class="mb-1" style="color: #05519d;"> MetaCritic: {{ game.score }}</p>
+
+
+        {% endif %}
+        <div class="row d-flex justify-content-center">
+          <div class="col mx-1 text-end">
+        {% if game.platform == "XBOX" %}
+        <img src="/media/images/xbox.png" class="img-thumbnail" style="width: 4rem; height: 4rem ;">
+        {% elif game.platform == "PS" %}
+        <img src="/media/images/pslogo.jpg" class="img-thumbnail" style="width: 4rem; height: 4rem ;">
+        {% elif game.platform == "Nin" %}
+        <img src="/media/images/ninlogo.png" class="img-thumbnail" style="width: 4rem; height: 4rem ;">
+        {% endif %}
+        </div>
+        
+          <div class="col text-start">
+            {% if game.get_rating == "E" %}
+            <img src="/media/images/eimg.png" class="img-thumbnail" style="width: 4rem; height: 4rem ;">
+            {% elif game.get_rating == "E+10" %}
+            <img src="/media/images/e10img.png" class="img-thumbnail" style="width: 4rem; height: 4rem ;">
+            {% elif game.get_rating_display == "T" %}
+            <img src="/media/images/timg.png" class="img-thumbnail" style="width: 4rem; height: 4rem ;">
+            {% elif game.get_rating == "M" %}
+            <img src="/media/images/mimg.png" class="img-thumbnail" style="width: 4rem; height: 4rem ;">
+            {% elif game.get_rating == "A" %}
+            <img src="/media/images/aimg.png" class="img-thumbnail" style="width: 4rem; height: 4rem ;">
+            {% endif %}
+          </div>
+          </div>
+        </div>
+        {% endfor %}
+
+      </div>
+
+      {% else %}
+      <div class="row mx-auto text-center" id="rowb" style="background-color: white; color: black;">
+       <P> Games Not Found</P>
+      </div>
+
+
+      {% endif %}
 </body>
 {% endblock %}
+
+
 </html>

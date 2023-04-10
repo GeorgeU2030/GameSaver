@@ -41,6 +41,9 @@
               <li class="nav-item">
                 <a class="nav-link active" aria-current="page" href="https://www.nintendo.com/es-co/" id="nintendoitem">Nintendo</a>
               </li> 
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="{% url 'account_logout' %}" >LogOut</a>
+              </li> 
             {% else %}
               <li class="nav-item">
                 <a class="nav-link active" aria-current="page" href="{% url 'account_signup' %}" id="signup">Sign Up</a>
